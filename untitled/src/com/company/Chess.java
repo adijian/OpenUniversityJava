@@ -7,9 +7,6 @@ public class Chess
     public static void main (String [] args) {
         // Variables:
         boolean thereIsAThreat = false;
-        int tempRow1_b;
-        int tempCol1_b;
-
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Please enter the type" + " of the first chessman");
@@ -27,18 +24,19 @@ public class Chess
 
         // If first chess piece is different from second chess piece
         if (first != second) {
-            if (row1 >= 1 || row1 <= 8 || col1 >= 1 || col1 <= 8 ||
-                    row2 >= 1 || row2 <= 8 || col2 >= 1 || col2 <= 8) {
+            if (row1 >= 1 && row1 <= 8 && col1 >= 1 && col1 <= 8 &&
+                    row2 >= 1 && row2 <= 8 && col2 >= 1 && col2 <= 8) {
                 if (row1 != row2 && col1 != col2) {
                     // Detect if either piece is threating the other
-                    // If chess piece is equal r
-
                     switch (first) {
+                        // If chess piece is equal rook
                         case 'r':
+                            // When either input columns or rows are equal, the rook threats the other chess piece
                             if (col1 == col2 || row1 == row2) {
                                 thereIsAThreat = true;
                             }
-                            if (thereIsAThreat)
+                            if (thereIsAThreat) {
+                                // Print the relevant chess pieces' names
                                 switch (second) {
                                     case 'b':
                                         System.out.println("rook" + " threats " + "bishop");
@@ -47,95 +45,54 @@ public class Chess
                                         System.out.println("rook" + " threats " + "knight");
                                         break;
                                 }
+                            }
                             break;
 
+                        // If chess piece is equal bishop
                         case 'b':
-                            tempRow1_b = row1;
-                            tempCol1_b = col1;
-
-                            if ((tempRow1_b + 1) == row2) {
-                                if ((tempCol1_b + 1) == col2 || (tempCol1_b - 1) == col2) {
+                            // Scan the rows for all possible directions the bishop can travel
+                            if ((row1 + 1) == row2 || (row1 - 1) == row2) {
+                                if ((col1 + 1) == col2 || (col1 - 1) == col2) {
                                     thereIsAThreat = true;
                                 }
                             }
 
-                            if ((tempRow1_b + 2) == row2) {
-                                if ((tempCol1_b + 2) == col2 || (tempCol1_b - 2) == col2) {
+                            if ((row1 + 2) == row2 || (row1 - 2) == row2) {
+                                if ((col1 + 2) == col2 || (col1 - 2) == col2) {
                                     thereIsAThreat = true;
                                 }
                             }
 
-                            if ((tempRow1_b + 3) == row2) {
-                                if ((tempCol1_b + 3) == col2 || (tempCol1_b - 3) == col2) {
+                            if ((row1 + 3) == row2 || (row1 - 3) == row2) {
+                                if ((col1 + 3) == col2 || (col1 - 3) == col2) {
                                     thereIsAThreat = true;
                                 }
                             }
-                            if ((tempRow1_b + 4) == row2) {
-                                if ((tempCol1_b + 4) == col2 || (tempCol1_b - 4) == col2) {
+                            if ((row1 + 4) == row2 || (row1 - 4) == row2) {
+                                if ((col1 + 4) == col2 || (col1 - 4) == col2) {
                                     thereIsAThreat = true;
                                 }
                             }
-                            if ((tempRow1_b + 5) == row2) {
-                                if ((tempCol1_b + 5) == col2 || (tempCol1_b - 5) == col2) {
-                                    thereIsAThreat = true;
-                                }
-                            }
-
-                            if ((tempRow1_b + 6) == row2) {
-                                if ((tempCol1_b + 6) == col2 || (tempCol1_b - 6) == col2) {
+                            if ((row1 + 5) == row2 || (row1 - 5) == row2) {
+                                if ((col1 + 5) == col2 || (col1 - 5) == col2) {
                                     thereIsAThreat = true;
                                 }
                             }
 
-                            if ((tempRow1_b + 7) == row2) {
-                                if ((tempCol1_b + 7) == col2 || (tempCol1_b - 7) == col2) {
+                            if ((row1 + 6) == row2 || (row1 - 6) == row2) {
+                                if ((col1 + 6) == col2 || (col1 - 6) == col2) {
                                     thereIsAThreat = true;
                                 }
                             }
 
-                            if ((tempRow1_b - 1) == row2) {
-                                if ((tempCol1_b + 1) == col2 || (tempCol1_b - 1) == col2) {
-                                    thereIsAThreat = true;
-                                }
-                            }
-
-                            if ((tempRow1_b - 2) == row2) {
-                                if ((tempCol1_b + 2) == col2 || (tempCol1_b - 2) == col2) {
-                                    thereIsAThreat = true;
-                                }
-                            }
-
-                            if ((tempRow1_b - 3) == row2) {
-                                if ((tempCol1_b + 3) == col2 || (tempCol1_b - 3) == col2) {
-                                    thereIsAThreat = true;
-                                }
-                            }
-                            if ((tempRow1_b - 4) == row2) {
-                                if ((tempCol1_b + 4) == col2 || (tempCol1_b - 4) == col2) {
-                                    thereIsAThreat = true;
-                                }
-                            }
-
-
-                            if ((tempRow1_b - 5) == row2) {
-                                if ((tempCol1_b + 5) == col2 || (tempCol1_b - 5) == col2) {
-                                    thereIsAThreat = true;
-                                }
-                            }
-
-                            if ((tempRow1_b - 6) == row2) {
-                                if ((tempCol1_b + 6) == col2 || (tempCol1_b - 6) == col2) {
-                                    thereIsAThreat = true;
-                                }
-                            }
-
-                            if ((tempRow1_b - 7) == row2) {
-                                if ((tempCol1_b + 7) == col2 || (tempCol1_b - 7) == col2) {
+                            if ((row1 + 7) == row2 || (row1 - 7) == row2) {
+                                if ((col1 + 7) == col2 || (col1 - 7) == col2) {
                                     thereIsAThreat = true;
                                 }
                             }
 
                             if (thereIsAThreat)
+                                // Print the relevant chess pieces' names
                                 switch (second) {
                                     case 'r':
                                         System.out.println("bishop" + " threats " + "root");
@@ -147,24 +104,53 @@ public class Chess
                             break;
 
                         case 'k':
+                            // If chess piece is equal knight
+                            // Scan for all the possible positions the knight can threaten another chess piece
+                            if(((row1 + 2) == row2 && (((col1 + 1) == col2) || (col1 - 1) == col2))) {
+                                thereIsAThreat = true;
+                            }
+
+                            if(((row1 - 2) == row2 && (((col1 + 1) == col2) || (col1 - 1) == col2))) {
+                                thereIsAThreat = true;
+                            }
+
+                            if(((((row1 + 1) == row2) || ((row1 - 1) == row2)) && (col1 + 2) == col2)) {
+                                thereIsAThreat = true;
+                            }
+
+                            if(((((row1 + 1) == row2) || ((row1 - 1) == row2)) && (col1 - 2) == col2)) {
+                                thereIsAThreat = true;
+                            }
+
+                            if (thereIsAThreat)
+                                // Print the relevant chess pieces' names
+                                switch (second) {
+                                    case 'r':
+                                        System.out.println("knight" + " threats " + "rook");
+                                        break;
+                                    case 'b':
+                                        System.out.println("knight" + " threats " + "bishop");
+                                        break;
+                                }
                             break;
-                    } // end first switch
-                } //end threat detect
+                    } // End first chess piece switch case
+
+                } // End threat detection
                 // Let the user know the chessmen positions shouldn't be identical
                 else {
                     System.out.println("Chessmen positions should not be identical");
                 }
-
-                if (!thereIsAThreat) { // else no threats
-                    System.out.println("No threats");
-                }
-
+            // End of check if input is valid
             } else { // Let the user know if the position of the chest pieces is not legal
                 System.out.println("Position is not legal");
             }
-        }
+        }// End of check whether first chess piece is different from second
         else { // If first char is equal to second char, let the user know the chess pieces must be different
             System.out.println("Chessmen should be different from each other");
+        }
+
+        if (!thereIsAThreat) { // Eventually, if there are no threats
+            System.out.println("No threats");
         }
     }// end of method main
 } //end of class Chess

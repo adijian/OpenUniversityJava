@@ -2,14 +2,10 @@ package com.company;
 
 import java.util.Scanner;
 
-public class Knight
+public class Knight2
 {
     public static void main (String [] args)
     {
-        //Variables:
-        int tempCol;
-        int tempRow;
-
         Scanner scan = new Scanner (System.in);
         System.out.println ("This program reads two integers which " + "represent the knight's location on the chess board: ");
         System.out.println ("Please enter the number of row");
@@ -21,95 +17,47 @@ public class Knight
         if (row >= 1 && row <= 8 && col >= 1 && col <=8) {
             System.out.println("Moves:");
 
-            // Assign two temporary variables
-            tempRow = row;
-            tempCol = col;
+            // Determine whether the knight can move forward in every variation
+            if((row + 2) >= 1 && (row + 2) <=8 &&
+               (col - 1) >= 1 && (col - 1) <=8 ) {
+                System.out.println((row + 2) + " " + (col - 1));
+            }
 
-            // First coordinate
-            tempRow -= 2;
-            tempCol++;
+            if((row + 2) >= 1 && (row + 2) <=8 &&
+               (col + 1) >= 1 && (col + 1) <=8 ) {
+                System.out.println((row + 2) + " " + (col + 1));
+            }
 
-            // Validate if row and column coordinate
-            if (tempRow >= 1 && tempRow <= 8 && tempCol >= 1 && tempCol <=8)
-                System.out.println(tempRow + " " + tempCol);
+            if((row - 2) >= 1 && (row - 2) <=8 &&
+               (col + 1) >= 1 && (col + 1) <=8 ) {
+                System.out.println((row - 2) + " " + (col + 1));
+            }
 
-            // Reset temporary variables
-            tempCol = col;
+            if((row - 2) >= 1 && (row - 2) <=8 &&
+               (col - 1) >= 1 && (col - 1) <=8 ) {
+                System.out.println((row - 2) + " " + (col - 1));
+            }
 
-            // Second coordinate
-            tempCol--;
+            if((row + 1) >= 1 && (row + 1) <=8 &&
+               (col + 2) >= 1 && (col + 2) <=8 ) {
+                System.out.println((row + 1) + " " + (col + 2));
+            }
 
-            // Validate if row and column coordinate
-            if (tempRow >= 1 && tempRow <= 8 && tempCol >= 1 && tempCol <=8)
-                System.out.println(tempRow + " " + tempCol);
+            if((row - 1) >= 1 && (row - 1) <=8 &&
+               (col + 2) >= 1 && (col + 2) <=8 ) {
+                System.out.println((row - 1) + " " + (col + 2));
+            }
 
-            // Reset temporary variables
-            tempRow = row;
-            tempCol = col;
+            if((row + 1) >= 1 && (row + 1) <=8 &&
+               (col - 2) >= 1 && (col - 2) <=8 ) {
+                System.out.println((row + 1) + " " + (col - 2));
+            }
 
-            // Third coordinate
-            tempRow--;
-
-            // Validate if row and column coordinate
-            if (tempRow >= 1 && tempRow <= 8 && tempCol >= 1 && tempCol <=8)
-                System.out.println(tempRow + " " + tempCol);
-
-            // Reset temporary variables
-            tempRow = row;
-
-            // Fourth coordinate
-            tempRow++;
-            tempCol -= 2;
-
-            // Validate if row and column coordinate
-            if (tempRow >= 1 && tempRow <= 8 && tempCol >= 1 && tempCol <=8)
-                System.out.println(tempRow + " " + tempCol);
-
-            // Reset temporary variables
-            tempRow = row;
-            tempCol = col;
-
-            // Fifth coordinate
-            tempRow += 2;
-            tempCol--;
-
-            // Validate if row and column coordinate
-            if (tempRow >= 1 && tempRow <= 8 && tempCol >= 1 && tempCol <=8)
-                System.out.println(tempRow + " " + tempCol);
-
-            // Reset temporary variables
-            tempCol = col;
-
-            // Sixth coordinate
-            tempCol++;
-
-            // Validate if row and column coordinate
-            if (tempRow >= 1 && tempRow <= 8 && tempCol >= 1 && tempCol <=8)
-                System.out.println(tempRow + " " + tempCol);
-
-            // Reset temporary variables
-            tempRow = row;
-            tempCol = col;
-
-            // Seventh coordinate
-            tempRow++;
-            tempCol += 2;
-
-            // Validate if row and column coordinate
-            if (tempRow >= 1 && tempRow <= 8 && tempCol >= 1 && tempCol <=8)
-                System.out.println(tempRow + " " + tempCol);
-
-            // Reset temporary variables
-            tempRow = row;
-
-            // Eighth coordinate
-            tempRow--;
-
-            // Validate if row and column coordinate
-            if (tempRow >= 1 && tempRow <= 8 && tempCol >= 1 && tempCol <=8)
-                System.out.println(tempRow + " " + tempCol);
-        } else {
-        // If row and column aren't valid, let the user know the input is invalid
+            if((row - 1) >= 1 && (row - 1) <=8 &&
+               (col - 2) >= 1 && (col - 2) <=8 ) {
+                System.out.println((row - 1) + " " + (col - 2));
+            }
+        } else { // If row and column aren't valid, let the user know the input is invalid
             System.out.println("Input is illegal");
         }
     } // end of method main
