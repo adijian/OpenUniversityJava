@@ -1,8 +1,8 @@
-package com.company;
+package Maman011;
 
 import java.util.Scanner;
 
-public class Knight2
+public class Knight
 {
     public static void main (String [] args)
     {

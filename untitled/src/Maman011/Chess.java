@@ -1,4 +1,4 @@
-package com.company;
+package Maman011;
 
 import java.util.Scanner;
 
