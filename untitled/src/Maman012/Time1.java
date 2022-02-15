@@ -107,28 +107,27 @@ public class Time1 {
         // if the time goes back a day it needs to be a valid input as stated before
         int new_object_hour;
         int new_object_minute;
-
-        System.out.println("Number: " + num);
         int numNoDays = num % (24 * 60);
-        System.out.println("numNoDays: " + numNoDays);
         int minutesNoDays = numNoDays % 60;
         int hoursNoDays = numNoDays / 60;
-        System.out.println("minutesNoDays: " + minutesNoDays);
-        System.out.println("hoursNoDays: " + hoursNoDays);
 
         new_object_hour = this.int_hour + hoursNoDays;
         new_object_minute = this.int_hour + minutesNoDays;
 
+        if ((this.int_hour + hoursNoDays) < 0) {
+            new_object_hour = 23 + (this.int_hour + hoursNoDays);
+        }
+        if ((this.int_minute + minutesNoDays) < 0) {
+            new_object_minute = 59 + (this.int_minute + minutesNoDays);
+            new_object_hour--;
+        }
 
-
-//        new_object_hour = this.int_hour + (num / 60);
-//        new_object_minute = this.int_hour + (num % 60);
         return new Time1(new_object_hour,new_object_minute);
     }
 
     public static void main(String[] args) {
         Time1 time = new Time1(9,44);
         Time1 time2 = new Time1(1,0);
-        System.out.println(time2.addMinutes(1440+200));
+        System.out.println(time2.addMinutes(-100));
     }
 }
