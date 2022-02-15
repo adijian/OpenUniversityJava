@@ -1,5 +1,4 @@
-package Maman011;
-
+//By Adi Jian, maman 11
 import java.util.Scanner;
 
 public class Chess
@@ -22,6 +21,7 @@ public class Chess
         System.out.println("Please enter the number of column");
         int col2 = scan.nextInt();
 
+	// From the input, determine the board status and the relation between the two chess pieces
         // If first chess piece is different from second chess piece
         if (first != second) {
             if (row1 >= 1 && row1 <= 8 && col1 >= 1 && col1 <= 8 &&
