@@ -107,27 +107,41 @@ public class Time1 {
         // if the time goes back a day it needs to be a valid input as stated before
         int new_object_hour;
         int new_object_minute;
+
+        // Various time conversions
+        // The number minus the days count
         int numNoDays = num % (24 * 60);
+        // Converted to minutes
         int minutesNoDays = numNoDays % 60;
+        // Converted to hours
         int hoursNoDays = numNoDays / 60;
 
+        // Save the parameter to prevent overriding
         new_object_hour = this.int_hour + hoursNoDays;
-        new_object_minute = this.int_hour + minutesNoDays;
+        new_object_minute = this.int_minute + minutesNoDays;
 
-        if ((this.int_hour + hoursNoDays) < 0) {
-            new_object_hour = 23 + (this.int_hour + hoursNoDays);
+        // If the number is negative, the format has to stay within time bounds
+        if (new_object_hour < 0) {
+            new_object_hour = 24 + new_object_hour;
         }
-        if ((this.int_minute + minutesNoDays) < 0) {
-            new_object_minute = 59 + (this.int_minute + minutesNoDays);
+        if (new_object_minute < 0) {
+            new_object_minute = 60 + new_object_minute;
             new_object_hour--;
         }
 
+        // If the minutes are above the hour mark, raise the hour count
+        if (new_object_minute > 60) {
+            new_object_minute = -(60 - new_object_minute);
+            new_object_hour++;
+        }
+
+        // New object
         return new Time1(new_object_hour,new_object_minute);
     }
 
     public static void main(String[] args) {
-        Time1 time = new Time1(9,44);
+        Time1 time = new Time1(9,45);
         Time1 time2 = new Time1(1,0);
-        System.out.println(time2.addMinutes(-100));
+        System.out.println(time2.addMinutes(+((60*2) + 10)));
     }
 }
