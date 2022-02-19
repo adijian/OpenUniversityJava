@@ -13,29 +13,42 @@ public class Flight {
     private int _price; // Flight cost per person
     private final int MAX_CAPACITY = 250;
 
-    Flight(String origin, String destination, int departureHours, int departureMinutes, int flightDuration, int noOfPassengers, int price) {
+    public Flight(String origin, String destination, int departureHours, int departureMinutes, int flightDuration, int noOfPassengers, int price) {
         //if number of passengers is higher than max capacity, the var of number of passengers is the max capacity
         if (noOfPassengers < MAX_CAPACITY) {
             this._noOfPassengers = MAX_CAPACITY;
         }
 
+
         if (noOfPassengers < 0) {
             this._noOfPassengers = 0;
         }
+        else if (noOfPassengers > MAX_CAPACITY) {
+            this._noOfPassengers = MAX_CAPACITY;
+        }
+        else {
+            this._noOfPassengers = noOfPassengers;
+        }
+
 
         this._isFull = (noOfPassengers == MAX_CAPACITY);
 
         // If the duration of the flight is smaller than 0 then the flight duration is 0
         if (flightDuration < 0) {
             this._flightDuration = 0;
+        } else {
+            this._flightDuration = flightDuration;
         }
 
         // If the price of the flight is smaller than 0 then the flight duration is 0
         if (price < 0) {
             this._price = 0;
         }
+        this._price = price;
 
-        _departure = new Time1(departureHours, departureMinutes);
+        this._departure = new Time1(departureHours, departureMinutes);
+        this._origin = origin;
+        this._destination = destination;
     }
 
     Flight (Flight other) {
@@ -46,38 +59,6 @@ public class Flight {
         this._noOfPassengers = other._noOfPassengers;
         this._isFull = other._isFull;
         this._price = other._price;
-    }
-
-    public String get_origin() {
-        return _origin;
-    }
-
-    public String get_destination() {
-        return _destination;
-    }
-
-    public Time1 get_departure() {
-        return _departure;
-    }
-
-    public int get_flightDuration() {
-        return _flightDuration;
-    }
-
-    public int get_noOfPassengers() {
-        return _noOfPassengers;
-    }
-
-    public boolean is_isFull() {
-        return _isFull;
-    }
-
-    public int get_price() {
-        return _price;
-    }
-
-    public int getMAX_CAPACITY() {
-        return MAX_CAPACITY;
     }
 
     public void set_origin(String _origin) {
@@ -106,6 +87,38 @@ public class Flight {
 
     public void set_price(int _price) {
         this._price = _price;
+    }
+
+    public String get_origin() {
+        return _origin;
+    }
+
+    public String get_destination() {
+        return _destination;
+    }
+
+    public Time1 get_departure() {
+        return _departure;
+    }
+
+    public int get_flightDuration() {
+        return _flightDuration;
+    }
+
+    public int get_noOfPassengers() {
+        return _noOfPassengers;
+    }
+
+    public boolean isFull() {
+        return _isFull;
+    }
+
+    public int get_price() {
+        return _price;
+    }
+
+    public int getMAX_CAPACITY() {
+        return MAX_CAPACITY;
     }
 
     boolean equals(Flight other) {
@@ -142,9 +155,9 @@ public class Flight {
 
     public String toString() {
         if (this._isFull) {
-            return "Flight from" +  this._origin + " to" + this._destination + " departs at " + this._departure + ". Flight is full.";
+            return "Flight from " +  this._origin + " to " + this._destination + " departs at " + this._departure + ". Flight is full.";
         } else {
-            return "Flight from" +  this._origin + " to" + this._destination + " departs at " + this._departure + ". Flight is not full.";
+            return "Flight from " +  this._origin + " to " + this._destination + " departs at " + this._departure + ". Flight is not full.";
         }
     }
 }
