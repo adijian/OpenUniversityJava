@@ -1,9 +1,17 @@
+/** Determine if a chess piece is attacking another chess piece on a chess board
+ * @author Adi Jian
+ * @version 9.3.2022
+ */
+
 package Maman011;
 
 import java.util.Scanner;
 
 public class Chess
 {
+    /**
+     * The user enters two chess pieces and the function prints if there is a threat between the two
+     */
     public static void main (String [] args) {
         // Variables:
         boolean thereIsAThreat = false;
