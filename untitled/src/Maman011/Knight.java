@@ -1,6 +1,6 @@
 /** Locates every possible move a knight can make on a chess board
  * @author Adi Jian
- * @version 3.9.2022
+ * @version 17.9.2022
  */
 package Maman011;
 
