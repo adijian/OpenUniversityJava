@@ -18,30 +18,30 @@ public class Time2 {
     }
 
     Time2 (Time2 other) {
-        this._minuteFromMid = other._minuteFromMid;
+        this._minuteFromMid = other.getHour() * 60 + other.getMinute();
     }
 
     // Getter functions
     int getHour() {
-        return this._minuteFromMid;
+        return this._minuteFromMid / 60;
     }
 
     int getMinute() {
-        return this._minuteFromMid;
+        return this._minuteFromMid % 60;
     }
 
     // Setter functions
     void setHour(int num) {
-        // If num is out of the 0-59 bounds, the original value is unchanged
+        // If num is out of the 0-23 bounds, the original value is unchanged
         if (num < 23 && num > 0) {
-            this._minuteFromMid = num;
+            this._minuteFromMid = (this.getHour() + num) % 23;
         }
     }
 
     void setMinute(int num) {
         // If num is out of the 0-59 bounds, the original value is unchanged
         if (num < 59 && num > 0) {
-            this._minuteFromMid = num;
+            this._minuteFromMid = (this.getMinute() + num) % 59;
         }
     }
 
@@ -52,15 +52,12 @@ public class Time2 {
 
     boolean equals (Time2 other) {
         // If the hours and minutes are equal to the input object's hours and minutes, return true
-        return other._minuteFromMid == _minuteFromMid;
+        return this._minuteFromMid == other._minuteFromMid;
     }
 
     boolean before (Time2 other) {
         // If the time entered was before the current object's time
-        if (this._minuteFromMid < other._minuteFromMid) {
-            return true;
-        }
-        else return this._minuteFromMid == other._minuteFromMid;
+        return this._minuteFromMid < other._minuteFromMid;
     }
 
     boolean after (Time2 other) {
@@ -74,39 +71,47 @@ public class Time2 {
     }
 
     public String toString() {
-        String hours = String.valueOf(this._minuteFromMid / 60);
-        String minutes = String.valueOf(this._minuteFromMid % 60);
+        int tempHours = this._minuteFromMid / 60;
+        int tempMinutes = this._minuteFromMid % 60;
+        String hours = String.valueOf(tempHours);
+        String minutes = String.valueOf(tempMinutes);
 
         // If the numbers are too short, add 0 to the number
-        if ((this._minuteFromMid / 60) < 10) {
+        if (tempHours < 10) {
             hours = "0" + hours;
-            if((this._minuteFromMid % 60) < 10) {
-                minutes = "0" + minutes;
-            }
+        }
+
+        if(tempMinutes < 10) {
+            minutes = "0" + minutes;
         }
 
         return hours + ":" + minutes;
     }
 
     Time2 addMinutes(int num) {
-        int hours = ((this._minuteFromMid + num) / 60) % 23;
-        int minutes = (this._minuteFromMid + num) % 60;
+        int tempNum = this._minuteFromMid + num;
+        int tempHours = tempNum / 60;
+        int tempMinutes = tempNum % 60;
 
-        // If the numbers are negative, display number in time bounds
-        if(hours < 0) {
-            hours = 24 + hours;
+        if (tempHours < 0) {
+            tempHours += 24;
         }
 
-        if(minutes < 0) {
-            minutes = 60 + minutes;
+        if (tempMinutes < 0) {
+            tempMinutes += 60;
+            tempHours--;
+
+            if (tempHours == 0) {
+                tempHours = 23;
+            }
         }
 
-        return new Time2(hours, minutes);
+
+        return new Time2(tempHours, tempMinutes);
     }
 
     public static void main(String[] args) {
-        Time2 time = new Time2(1,20);
-        Time2 time2 = new Time2(1,0);
-        System.out.println(time.difference(time2));
+        Time2 time = new Time2(0,20);
+        System.out.println(time.addMinutes(-140));
     }
 }

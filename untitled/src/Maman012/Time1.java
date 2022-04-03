@@ -3,6 +3,9 @@ package Maman012;
 public class Time1 {
 
     // Instance variables:
+    final int MINUTE = 60;
+    final int HOUR = 24;
+
     private int _hour; // Represents the hour between 23 and 0
     private int _minute; // Represents the minute between 59 and 0
 
@@ -10,19 +13,23 @@ public class Time1 {
     public Time1 (int h, int m) {
         // Resets the values to 0 if one of them is incorrect
 
-        if(h < 23 && h > 0) {
+        if(h < MINUTE && h > 0) {
             this._hour = h;
+        } else {
+            this._hour = 0;
         }
 
-        if(m < 59 && m > 0) {
+        if(m < MINUTE && m > 0) {
             this._minute = m;
+        } else {
+            this._minute = 0;
         }
     }
 
     public Time1 (Time1 other) {
         // Retrieves another time and copies its values
-        this._hour = other._hour;
-        this._minute = other._minute;
+        this._hour = other.getHour();
+        this._minute = other.getMinute();
     }
 
     // Getter functions
@@ -37,32 +44,33 @@ public class Time1 {
     // Setter functions
     public void setHour(int num) {
         // If num is out of the 0-23 bounds, the original value is unchanged
-        if (num < 23 && num > 0) {
+        if (num < HOUR && num >= 0) {
             this._hour = num;
         }
     }
 
     public void setMinute(int num) {
         // If num is out of the 0-23 bounds, the original value is unchanged
-        if (num < 59 && num > 0) {
-            this._hour = num;
+        if (num < MINUTE && num >= 0) {
+            this._minute = num;
         }
     }
 
     public String toString() {
         // Return the time in a digital clock convention (hh:mm) such as 07:30
-        String _hour_temp = String.valueOf(this._hour);
-        String _minute_temp = String.valueOf(this._minute);
+        String tempHour = String.valueOf(this._hour);
+        String tempMinute = String.valueOf(this._minute);
 
         // In case the hour/minute numbers are smaller than 10, a 0 has to be placed before the numbers
         if(this._hour < 10) {
-            _hour_temp = "0" + _hour_temp;
-            if (this._minute < 10) {
-                _minute_temp = "0" + _minute_temp;
-                return _hour_temp + ":" + _minute_temp;
-            }
+            tempHour = "0" + tempHour;
         }
-        return _hour_temp + ":" + _minute_temp;
+
+        if (this._minute < 10) {
+            tempMinute = "0" + tempMinute;
+        }
+
+        return tempHour + ":" + tempMinute;
     }
 
     public int minFromMidnight() {
@@ -97,27 +105,24 @@ public class Time1 {
         // Adds the number of minutes (num) to the current time (which is unchanged), represented by a new time object
         // If num is negative, subtract the minutes
         // if the time goes back a day it needs to be a valid input as stated before
-        int new_object_hour = (num + this._hour) / 60;
-        int new_object_minute = (num + this._minute) % 60;
+        int tempHour = ((num / 60) + this.getHour()) % 24;
+        int tempMinute = ((num % 60) + this.getMinute()) % 60;
 
         // If the number is negative, the format has to stay within time bounds
-        if (new_object_hour < 0) {
-            new_object_hour = 24 + new_object_hour;
+        if (tempHour < 0) {
+            tempHour += 24;
         }
 
-        if (new_object_minute < 0) {
-            new_object_minute = 60 + new_object_minute;
-            new_object_hour--;
+        if (tempMinute < 0) {
+            tempMinute += 60;
+            tempHour--;
+
+            if (tempHour == 0) {
+                tempHour = 23;
+            }
         }
 
         // New object
-        return new Time1(new_object_hour, new_object_minute);
-    }
-
-    public static void main(String[] args) {
-        Time1 time = new Time1(9,45);
-        Time1 time2 = new Time1(1,0);
-        System.out.println(time2.addMinutes(-(122)));
-
+        return new Time1(tempHour, tempMinute);
     }
 }
