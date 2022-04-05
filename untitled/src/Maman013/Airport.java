@@ -20,7 +20,7 @@ public class Airport {
 
     boolean addFlight(Flight flight) {
         // Adds a flight to the flight board
-        if (flight.get_origin().equals(this._city) || flight.get_destination().equals(this._city)) {
+        if (flight.getOrigin().equals(this._city) || flight.getDestination().equals(this._city)) {
             this._flightsSchedule[_noOfFlights] = flight;
             this._noOfFlights++;
             return true;
@@ -43,8 +43,8 @@ public class Airport {
 
     Time1 firstFlightFromOrigin(String place) {
         for (int i = 0; i < this._flightsSchedule.length; i++) {
-            if (this._flightsSchedule[i].get_origin().equals(place)) {
-                return this._flightsSchedule[i].get_departure();
+            if (this._flightsSchedule[i].getOrigin().equals(place)) {
+                return this._flightsSchedule[i].getDeparture();
             }
         }
         return null;
@@ -53,7 +53,7 @@ public class Airport {
     int howManyFullFlights() {
         int fullFlights = 0;
         for (int i = 0; i < this._flightsSchedule.length; i++) {
-            if (this._flightsSchedule[i].isFull()) {
+            if (this._flightsSchedule[i].getIsFull()) {
                 fullFlights++;
             }
         }
@@ -63,7 +63,7 @@ public class Airport {
     int howManyFlightsBetween(String place) {
         int flightsBetween = 0;
         for (int i = 0; i < this._flightsSchedule.length; i++) {
-            if (this._flightsSchedule[i].get_origin().equals(place) || this._flightsSchedule[i].get_destination().equals(place)) {
+            if (this._flightsSchedule[i].getOrigin().equals(place) || this._flightsSchedule[i].getDestination().equals(place)) {
                 flightsBetween++;
             }
         }
@@ -83,11 +83,11 @@ public class Airport {
                 int count = 1;
                 for (int j = i + 1; j < this._flightsSchedule.length; j++) {
                     if (this._flightsSchedule[j] != null) {
-                        if (this._flightsSchedule[j].get_destination().equals(this._flightsSchedule[i].get_destination())) {
+                        if (this._flightsSchedule[j].getDestination().equals(this._flightsSchedule[i].getDestination())) {
                             count++;
                         }
                         if (count >= maxCount) {
-                            similarDestination = this._flightsSchedule[i].get_destination();
+                            similarDestination = this._flightsSchedule[i].getDestination();
                             maxCount = count;
                         }
                     }
@@ -107,8 +107,8 @@ public class Airport {
 
         for (int i = 1; i < this._flightsSchedule.length; i++) {
             if (this._flightsSchedule[i] != null &&
-                this._flightsSchedule[i].get_price() > this._flightsSchedule[i - 1].get_price() &&
-                this._flightsSchedule[i].get_price() > this._flightsSchedule[mostExpensiveFlight].get_price()) {
+                this._flightsSchedule[i].getPrice() > this._flightsSchedule[i - 1].getPrice() &&
+                this._flightsSchedule[i].getPrice() > this._flightsSchedule[mostExpensiveFlight].getPrice()) {
                     mostExpensiveFlight = i;
             }
         }
@@ -125,8 +125,8 @@ public class Airport {
 
         for (int i = 1; i < this._flightsSchedule.length; i++) {
             if (this._flightsSchedule[i] != null &&
-                this._flightsSchedule[i].get_flightDuration() > this._flightsSchedule[i - 1].get_flightDuration() &&
-                this._flightsSchedule[i].get_flightDuration() > this._flightsSchedule[longestFlightDuration].get_flightDuration()) {
+                this._flightsSchedule[i].getFlightDuration() > this._flightsSchedule[i - 1].getFlightDuration() &&
+                this._flightsSchedule[i].getFlightDuration() > this._flightsSchedule[longestFlightDuration].getFlightDuration()) {
                 longestFlightDuration = i;
             }
         }
