@@ -3,9 +3,10 @@ package Maman014;
 public class Question2 {
     public static void main(String[] args) {
 //     int[] a = {1,2,4,4,3,4,5};
-     int[] a = {1,2,2,3,4,4,5,6,6,6,6,7,8,9};
+//     int[] a = {1,2,2,3,4,4,5,6,6,6,6,7,8,9};
 //     int[] a = {1,3,2};
 //     int[] a = {5,4,3,2,1};
+     int[] a = {1,2,4,4,5};
 
     System.out.println(strictlyIncreasing(a));
     }
@@ -21,7 +22,7 @@ public class Question2 {
                     System.out.println("+1");
                     counter++;
                 } else {
-                    while(counter > 0) {
+                    if(counter > 0){
                         System.out.println("finalCounter: " + finalCounter + " counter: " + counter);
                         finalCounter += counter;
                         counter--;
@@ -29,7 +30,7 @@ public class Question2 {
             }
         }
 
-        while(counter > 0) {
+        if(counter > 0){
             System.out.println("finalCounter: " + finalCounter + " counter: " + counter);
             finalCounter += counter;
             counter--;
@@ -39,5 +40,4 @@ public class Question2 {
     }
 }
 
-//                        System.out.println("finalCounter: " + finalCounter + " counter: " + counter);
 
