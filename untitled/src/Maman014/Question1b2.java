@@ -25,9 +25,41 @@ public class Question1b2 {
         return true;
     }
 
-//
-//    public static boolean findValTest (int [][] m, int val){
-//
-//    }
+    public static boolean findValTest (int [][] m, int val) {
+        int j = 0;
+        int n = m.length;
+
+        if(m[n-1][n-1] < val) {
+            return false;
+        } else if(m[0][0] > val) {
+            return false;
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            if(m[i][n-1] == val) {
+                return true;
+            } else if (m[i][n-1] > val){
+                j = i;
+                break;
+            }
+        }
+
+        for(int i = 0; i < n; i++) {
+
+            if(m[j][i] == val) {
+                return true;
+            }
+        }
+
+        for(int i = 0; i < n; i++) {
+
+            if(m[i][j - 1] == val) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }
