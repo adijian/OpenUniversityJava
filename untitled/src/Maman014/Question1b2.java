@@ -1,19 +1,19 @@
 package Maman014;
 
 public class Question1b2 {
-    public static void main(String[] args) {
-        int[][] m = {
-                {1,2,3},
-                {1,2,3},
-                {1,2,4}
-        };
-
-        int[][] m2 = {
-                {1,2,3},
-                {1,2,3},
-                {1,2,4}
-        };
-    }
+//    public static void main(String[] args) {
+//        int[][] m = {
+//                {1,2,3},
+//                {1,2,3},
+//                {1,2,4}
+//        };
+//
+//        int[][] m2 = {
+//                {1,2,3},
+//                {1,2,3},
+//                {1,2,4}
+//        };
+//    }
 
     public static boolean test(int [][] m)
     {

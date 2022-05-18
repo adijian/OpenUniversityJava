@@ -1,11 +1,6 @@
 package Maman014;
 
 public class Question1b1 {
-    public static void main(String[] args) {
-
-
-    }
-
     public static boolean findValWhat (int [][] m, int val){
         int j = 0;
         int n = m.length;
